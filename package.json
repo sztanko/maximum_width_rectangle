@@ -4,9 +4,10 @@
   "description": "Similar to Minimum Area Bounding Box, this one finds the Maximum Length Bounding Box.",
   "main": "src/mar.coffee",
   "dependencies": {
-    "graham_scan": "git://github.com/brian3kb/graham_scan_js.git#master"
+    "graham_scan_js": "git://github.com/brian3kb/graham_scan_js.git#master"
   },
   "devDependencies": {
+    "coffeeify": "~1.0.0",
     "gulp": "~3.8.10",
     "gulp-plumber": "~0.6.6",
     "gulp-uglify": "~1.0.2",

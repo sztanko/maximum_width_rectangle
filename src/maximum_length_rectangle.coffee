@@ -1,6 +1,6 @@
-Mbr = require './convexhull'
+#Mbr = require 'graham_scan' //TODO find out why the hell this thing is not working
+Mbr = require './convexhull.js'
 
-#Mbr = require 'graham_scan'
 getRect = (points) ->
     getAngle = (p1, p2) ->
         #console.log("inside getAngle")

@@ -17,7 +17,8 @@ gulp.task 'js', ->
         cache: {},
         packageCache: {},
         #fullPaths: true,
-        transform: ['coffee-reactify'],
+        transform: ['coffeeify']
+        #transform: ['coffee-reactify'],
         extensions: ['.coffee', '.cjsx'],
     }))
     #.pipe(uglify())
