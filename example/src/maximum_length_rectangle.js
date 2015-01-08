@@ -262,8 +262,8 @@ test = function() {
 
 // ---------- Leaflet start ---------- //
 var map = L.map('map', {
-    center:[30,-45] , //[49.2503, -123.062]
-    zoom: 3,
+    center:[49.283259, -123.122659] , //[49.2503, -123.062]
+    zoom:15,
     maxZoom:20,
     attributionControl:true,
     zoomControl: true
@@ -279,12 +279,12 @@ var Stamen_Toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png
 test2 = function(){
   // console.log(data);
   // --- Leaflet Start -- //
-  d3.json("data/ABC_Locations_08_1.geojson", function(data) {
+  d3.json("data/example_vancouver_buildings.geojson", function(data) {
     //ABC_Locations_08_1
     var svgstyle = function style(feature) {
         return {
-            fillColor: "#FF000",
-            weight: 10,
+            fillColor: "#944DFF",
+            weight: 1,
             opacity: 0.75,
             color: '#FF0000', //#fff
             // dashArray: '3',
@@ -295,9 +295,9 @@ test2 = function(){
         var layer = e.target;
 
         layer.setStyle({
-            weight: 10,
+            weight: 2,
             opacity: 0.85,
-            color: '#FF7171', //#fff
+            color: '#CCCCFF', //#fff
             dashArray: '',
             fillOpacity: 1
         });
@@ -331,7 +331,7 @@ test2 = function(){
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4>Polygon Examples</h4>' +  (props ?
-            '<b>' + 'Polygon: '+ props.letter + '</b><br />' + 'Angle: ' + geomangle.meta.angle 
+            '<b>' + 'Polygon: '+ props.BUILDIN_ID + '</b><br />' + 'Angle: ' + geomangle.meta.angle 
             : 'Click on a polygon');
     };
 
