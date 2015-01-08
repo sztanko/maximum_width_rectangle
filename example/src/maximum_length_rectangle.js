@@ -280,6 +280,7 @@ test2 = function(){
   // console.log(data);
   // --- Leaflet Start -- //
   d3.json("data/example_vancouver_buildings.geojson", function(data) {
+    console.log(data);
     //ABC_Locations_08_1
     var svgstyle = function style(feature) {
         return {
@@ -307,6 +308,7 @@ test2 = function(){
         }
 
         info.update(layer.feature.properties);
+
     }
 
     function resetHighlight(e) {
@@ -316,9 +318,25 @@ test2 = function(){
 
     var geomangle = [];
     function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-    geomangle = getRect(e.target.feature.geometry.coordinates[0])
+      map.fitBounds(e.target.getBounds());
+      geomangle = getRect(e.target.feature.geometry.coordinates[0])
+      console.log(geomangle);
+
+      var geobounds = [{
+        "type": "Feature",
+        "properties": {"boundingbox": "yes"},
+        "geometry":{
+          "type": "Polygon",
+          "coordinates":[[]]
+        }
+      }];
+      geomangle.polygon.forEach(function(i){
+        geobounds[0].geometry.coordinates[0].push(i);
+      })
+     L.geoJson(geobounds[0]).addTo(map);
+     
     }
+
 
     var info = L.control();
 
@@ -331,7 +349,7 @@ test2 = function(){
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4>Polygon Examples</h4>' +  (props ?
-            '<b>' + 'Polygon: '+ props.BUILDIN_ID + '</b><br />' + 'Angle: ' + geomangle.meta.angle 
+            '<b>' + 'Angle from true north: ' + geomangle.meta.angle 
             : 'Click on a polygon');
     };
 
@@ -352,6 +370,7 @@ test2 = function(){
     }).addTo(map);
   });
 
+  
 };
 test2();
 
