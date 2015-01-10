@@ -260,10 +260,10 @@ test = function() {
   return console.log(getRect(points));
 };
 
-// ---------- Leaflet start ---------- //
+// ---------- Mapping Example ---------- //
 var map = L.map('map', {
     center:[49.283259, -123.122659] , //[49.2503, -123.062]
-    zoom:15,
+    zoom:17,
     maxZoom:20,
     attributionControl:true,
     zoomControl: true
@@ -277,51 +277,40 @@ var Stamen_Toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png
 }).addTo(map);
 
 test2 = function(){
-  // console.log(data);
-  // --- Leaflet Start -- //
   d3.json("data/example_vancouver_buildings.geojson", function(data) {
-    console.log(data);
-    //ABC_Locations_08_1
     var svgstyle = function style(feature) {
         return {
-            fillColor: "#944DFF",
+            fillColor: "#B2B2B2",
             weight: 1,
             opacity: 0.75,
-            color: '#FF0000', //#fff
+            color: '#808080', //#fff
             // dashArray: '3',
             fillOpacity: 1
         };
     }
     function highlightFeature(e) {
         var layer = e.target;
-
         layer.setStyle({
-            weight: 2,
+            weight: 3,
             opacity: 0.85,
             color: '#CCCCFF', //#fff
             dashArray: '',
             fillOpacity: 1
         });
-
         if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();
         }
-
         info.update(layer.feature.properties);
-
     }
-
     function resetHighlight(e) {
         geojson.resetStyle(e.target);
         // info.update();
     }
-
     var geomangle = [];
     function zoomToFeature(e) {
-      map.fitBounds(e.target.getBounds());
+      // map.fitBounds(e.target.getBounds());
       geomangle = getRect(e.target.feature.geometry.coordinates[0])
       console.log(geomangle);
-
       var geobounds = [{
         "type": "Feature",
         "properties": {"boundingbox": "yes"},
@@ -337,22 +326,18 @@ test2 = function(){
      
     }
 
-
     var info = L.control();
-
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;
     };
-
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4>Polygon Examples</h4>' +  (props ?
             '<b>' + 'Angle from true north: ' + geomangle.meta.angle 
             : 'Click on a polygon');
     };
-
     info.addTo(map);
 
     function onEachFeature(feature, layer) {
@@ -363,7 +348,6 @@ test2 = function(){
         });
 
     }
-
     geojson = L.geoJson(data, {
         style: svgstyle,
         onEachFeature: onEachFeature
