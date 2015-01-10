@@ -1,0 +1,29 @@
+{
+  "name": "maximum_width_rectangle",
+  "version": "0.0.1",
+  "description": "Similar to Minimum Area Bounding Box, this one finds the Maximum Length Bounding Box.",
+  "main": "src/mar.coffee",
+  "dependencies": {
+    "graham_scan_js": "git://github.com/brian3kb/graham_scan_js.git#master"
+  },
+  "devDependencies": {
+    "coffeeify": "~1.0.0",
+    "gulp": "~3.8.10",
+    "gulp-plumber": "~0.6.6",
+    "gulp-uglify": "~1.0.2",
+    "gulp-rename": "~1.2.0",
+    "gulp-load-plugins": "~0.8.0",
+    "gulp-util": "~3.0.1",
+    "gulp-watch": "~3.0.0",
+    "uglify": "~0.1.1",
+    "vinyl-source-stream": "~1.0.0",
+    "watchify": "~0.6.4",
+    "coffee-script": "~1.8.0",
+    "gulp-browserify": "~0.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Demeter Sztanko",
+  "license": "BSD-2-Clause"
+}
