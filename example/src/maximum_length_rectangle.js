@@ -280,7 +280,7 @@ test2 = function(){
   d3.json("data/example_vancouver_buildings.geojson", function(data) {
     var svgstyle = function style(feature) {
         return {
-            fillColor: "#B2B2B2",
+            fillColor: "#666699", // #666699, #B2B2B2
             weight: 1,
             opacity: 0.75,
             color: '#808080', //#fff
